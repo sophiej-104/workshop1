@@ -40,6 +40,7 @@ fig_h <- fig_w
 dpi <- 300
 device <- "tiff" 
 
+
 # saving the first figure to the figure folder
 
 ggsave("./figures/fig1.tiff",
@@ -49,3 +50,20 @@ ggsave("./figures/fig1.tiff",
        height = fig_h,
        units = units,
        dpi = dpi)
+
+
+
+
+
+
+
+
+# Making some changes 
+fig2 <- ggplot(summary_chaff, aes(x = sex, y = mean, col= "red")) + 
+  geom_errorbar(mapping = aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +
+  geom_point() +
+  xlab("Sex") +
+  ylab("Mean Mass")
+
+
+
