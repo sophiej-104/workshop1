@@ -24,3 +24,28 @@ summary_chaff <- tidy_chaff %>% group_by(sex) %>%
   summarise(mean = mean(mass), 
             n = length(mass),
             sd = sd(mass))
+
+# visualising the summary data 
+
+fig1 <- ggplot(summary_chaff, aes(x = sex, y = mean)) + 
+  geom_errorbar(mapping = aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +
+  geom_point() +
+  xlab("Sex") +
+  ylab("Mean Mass")
+
+# figure saving settings
+units <- "in"  
+fig_w <- 3.5
+fig_h <- fig_w
+dpi <- 300
+device <- "tiff" 
+
+# saving the first figure to the figure folder
+
+ggsave("./figures/fig1.tiff",
+       plot = fig1,
+       device = device,
+       width = fig_w,
+       height = fig_h,
+       units = units,
+       dpi = dpi)
